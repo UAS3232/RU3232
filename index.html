@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RU3232 Gaming</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0f19;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #121827;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .balance {
+      background: #1c2638;
+      padding: 10px 15px;
+      border-radius: 20px;
+      color: #ffd54a;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #aeb7c7;
+      margin-bottom: 25px;
+    }
+
+    .play {
+      border: none;
+      padding: 15px 35px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      background: #ffd54a;
+      color: #111;
+      cursor: pointer;
+    }
+
+    .games {
+      padding: 20px;
+    }
+
+    .games h2 {
+      margin-bottom: 18px;
+    }
+
+    .game-card {
+      background: #151d2d;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 15px;
+      border: 1px solid #263249;
+    }
+
+    .game-card h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .game-card p {
+      color: #9da8ba;
+      margin-bottom: 15px;
+    }
+
+    .game-btn {
+      background: #4f8cff;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .message {
+      text-align: center;
+      margin: 20px;
+      color: #ffd54a;
+      min-height: 25px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 20px;
+      text-align: center;
+      color: #778297;
+      border-top: 1px solid #202a3d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">RU3232</div>
+    <div class="balance">🪙 Coins: <span id="coins">1000</span></div>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to RU3232</h1>
+    <p>Original Gaming Platform</p>
+    <button class="play" onclick="playGame()">PLAY NOW</button>
+  </section>
+
+  <section class="games">
+    <h2>🎮 Games</h2>
+
+    <div class="game-card">
+      <h3>🎯 Lucky Grid</h3>
+      <p>Choose a number and play with virtual coins.</p>
+      <button class="game-btn" onclick="playGame()">Play Game</button>
+    </div>
+  </section>
+
+  <div class="message" id="message"></div>
+
+  <footer>
+    © 2026 RU3232 — Original Game Demo
+  </footer>
+
+  <script>
+    let coins = 1000;
+
+    function playGame() {
+      if (coins < 10) {
+        document.getElementById("message").textContent =
+          "Not enough virtual coins.";
+        return;
+      }
+
+      coins -= 10;
+
+      const number = Math.floor(Math.random() * 9) + 1;
+
+      document.getElementById("coins").textContent = coins;
+
+      document.getElementById("message").textContent =
+        "Round Result: " + number + " | 10 virtual coins used.";
+    }
+  </script>
+
+</body>
+</html>

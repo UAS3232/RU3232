@@ -1,171 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RU3232 Gaming</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RU3232 Gaming</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #0b0f19;
-      color: white;
-      min-height: 100vh;
-    }
-
-    header {
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #121827;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .balance {
-      background: #1c2638;
-      padding: 10px 15px;
-      border-radius: 20px;
-      color: #ffd54a;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 45px 20px;
-    }
-
-    .hero h1 {
-      font-size: 38px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      color: #aeb7c7;
-      margin-bottom: 25px;
-    }
-
-    .play {
-      border: none;
-      padding: 15px 35px;
-      border-radius: 30px;
-      font-size: 18px;
-      font-weight: bold;
-      background: #ffd54a;
-      color: #111;
-      cursor: pointer;
-    }
-
-    .games {
-      padding: 20px;
-    }
-
-    .games h2 {
-      margin-bottom: 18px;
-    }
-
-    .game-card {
-      background: #151d2d;
-      border-radius: 18px;
-      padding: 25px;
-      margin-bottom: 15px;
-      border: 1px solid #263249;
-    }
-
-    .game-card h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-
-    .game-card p {
-      color: #9da8ba;
-      margin-bottom: 15px;
-    }
-
-    .game-btn {
-      background: #4f8cff;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .message {
-      text-align: center;
-      margin: 20px;
-      color: #ffd54a;
-      min-height: 25px;
-    }
-
-    footer {
-      margin-top: 30px;
-      padding: 20px;
-      text-align: center;
-      color: #778297;
-      border-top: 1px solid #202a3d;
-    }
-  </style>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#080c16;
+  color:white;
+}
+header{
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#111827;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
+.coins{
+  background:#202b43;
+  padding:10px 15px;
+  border-radius:25px;
+  color:#ffd43b;
+  font-weight:bold;
+}
+.hero{
+  text-align:center;
+  padding:55px 20px 35px;
+}
+.hero h1{
+  font-size:42px;
+  margin:0 0 10px;
+}
+.hero p{
+  color:#aab4c8;
+  font-size:18px;
+}
+.play{
+  margin-top:20px;
+  border:0;
+  padding:15px 35px;
+  border-radius:30px;
+  background:#ffd43b;
+  font-size:18px;
+  font-weight:bold;
+}
+.container{
+  padding:20px;
+  max-width:700px;
+  margin:auto;
+}
+h2{
+  margin-top:10px;
+}
+.game{
+  background:#151d2d;
+  border:1px solid #28354e;
+  border-radius:20px;
+  padding:22px;
+  margin:18px 0;
+}
+.game h3{
+  font-size:23px;
+  margin:0 0 8px;
+}
+.game p{
+  color:#aab4c8;
+}
+button{
+  border:0;
+  border-radius:12px;
+  padding:12px 20px;
+  font-size:16px;
+  cursor:pointer;
+  background:#4f8cff;
+  color:white;
+}
+.result{
+  margin-top:15px;
+  min-height:25px;
+  color:#ffd43b;
+  font-weight:bold;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:15px;
+}
+.grid button{
+  font-size:22px;
+  padding:18px 5px;
+}
+.colors{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+.colors button{
+  flex:1;
+}
+.red{background:#e74c3c}
+.blue{background:#3498db}
+.green{background:#2ecc71}
+.yellow{background:#f1c40f;color:#111}
+footer{
+  text-align:center;
+  padding:35px 10px;
+  margin-top:30px;
+  color:#69758a;
+  border-top:1px solid #202b3e;
+}
+.small{
+  color:#69758a;
+  font-size:13px;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">RU3232</div>
-    <div class="balance">🪙 Coins: <span id="coins">1000</span></div>
-  </header>
+<header>
+  <div class="logo">RU3232</div>
+  <div class="coins">🪙 <span id="coins">1000</span></div>
+</header>
 
-  <section class="hero">
-    <h1>Welcome to RU3232</h1>
-    <p>Original Gaming Platform</p>
-    <button class="play" onclick="playGame()">PLAY NOW</button>
-  </section>
+<section class="hero">
+  <h1>Welcome to RU3232</h1>
+  <p>Original Mobile Gaming Platform</p>
+  <button class="play" onclick="scrollToGames()">PLAY NOW</button>
+</section>
 
-  <section class="games">
-    <h2>🎮 Games</h2>
+<div class="container">
 
-    <div class="game-card">
-      <h3>🎯 Lucky Grid</h3>
-      <p>Choose a number and play with virtual coins.</p>
-      <button class="game-btn" onclick="playGame()">Play Game</button>
-    </div>
-  </section>
+<h2>🎮 Games</h2>
 
-  <div class="message" id="message"></div>
+<!-- GAME 1 -->
+<div class="game">
+  <h3>🎯 Lucky Grid</h3>
+  <p>Choose a number from 1 to 9 and test your luck with virtual coins.</p>
 
-  <footer>
-    © 2026 RU3232 — Original Game Demo
-  </footer>
+  <div class="grid">
+    <button onclick="lucky(1)">1</button>
+    <button onclick="lucky(2)">2</button>
+    <button onclick="lucky(3)">3</button>
+    <button onclick="lucky(4)">4</button>
+    <button onclick="lucky(5)">5</button>
+    <button onclick="lucky(6)">6</button>
+    <button onclick="lucky(7)">7</button>
+    <button onclick="lucky(8)">8</button>
+    <button onclick="lucky(9)">9</button>
+  </div>
 
-  <script>
-    let coins = 1000;
+  <div id="luckyResult" class="result"></div>
+</div>
 
-    function playGame() {
-      if (coins < 10) {
-        document.getElementById("message").textContent =
-          "Not enough virtual coins.";
-        return;
-      }
+<!-- GAME 2 -->
+<div class="game">
+  <h3>🎨 Color Match</h3>
+  <p>Pick a color. If it matches the generated color, you earn virtual coins.</p>
 
-      coins -= 10;
+  <div class="colors">
+    <button class="red" onclick="colorGame('Red')">Red</button>
+    <button class="blue" onclick="colorGame('Blue')">Blue</button>
+    <button class="green" onclick="colorGame('Green')">Green</button>
+    <button class="yellow" onclick="colorGame('Yellow')">Yellow</button>
+  </div>
 
-      const number = Math.floor(Math.random() * 9) + 1;
+  <div id="colorResult" class="result"></div>
+</div>
 
-      document.getElementById("coins").textContent = coins;
+<!-- GAME 3 -->
+<div class="game">
+  <h3>⚡ Number Rush</h3>
+  <p>Tap the button and try to get a high number.</p>
 
-      document.getElementById("message").textContent =
-        "Round Result: " + number + " | 10 virtual coins used.";
-    }
-  </script>
+  <button onclick="numberRush()">START</button>
+
+  <div id="rushResult" class="result"></div>
+</div>
+
+<p class="small">
+  All games use virtual coins only. No real-money betting or cash-out.
+</p>
+
+</div>
+
+<footer>
+  © 2026 RU3232 — Original Gaming Platform
+</footer>
+
+<script>
+
+let coins = Number(localStorage.getItem("ru3232coins"));
+
+if(isNaN(coins)){
+  coins = 1000;
+}
+
+updateCoins();
+
+function updateCoins(){
+  document.getElementById("coins").innerText = coins;
+  localStorage.setItem("ru3232coins", coins);
+}
+
+function spend(amount){
+  if(coins < amount){
+    alert("Not enough virtual coins!");
+    return false;
+  }
+
+  coins -= amount;
+  updateCoins();
+  return true;
+}
+
+function add(amount){
+  coins += amount;
+  updateCoins();
+}
+
+function lucky(choice){
+
+  if(!spend(10)) return;
+
+  let result = Math.floor(Math.random()*9)+1;
+
+  if(choice === result){
+
+    add(50);
+
+    document.getElementById("luckyResult").innerText =
+      "🎉 Correct! Number was " + result + ". +50 coins";
+
+  }else{
+
+    document.getElementById("luckyResult").innerText =
+      "Number was " + result + ". Try again!";
+  }
+}
+
+function colorGame(choice){
+
+  if(!spend(10)) return;
+
+  let colors = ["Red","Blue","Green","Yellow"];
+
+  let result = colors[Math.floor(Math.random()*colors.length)];
+
+  if(choice === result){
+
+    add(40);
+
+    document.getElementById("colorResult").innerText =
+      "🎉 Match! " + result + " — +40 coins";
+
+  }else{
+
+    document.getElementById("colorResult").innerText =
+      "Generated color: " + result;
+  }
+}
+
+function numberRush(){
+
+  if(!spend(10)) return;
+
+  let number = Math.floor(Math.random()*100)+1;
+
+  let reward = Math.floor(number/2);
+
+  add(reward);
+
+  document.getElementById("rushResult").innerText =
+    "⚡ You got " + number + "! +" + reward + " coins";
+}
+
+function scrollToGames(){
+
+  window.scrollTo({
+    top:450,
+    behavior:"smooth"
+  });
+
+}
+
+</script>
 
 </body>
 </html>
